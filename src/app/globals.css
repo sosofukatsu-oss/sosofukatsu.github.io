@@ -1,26 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-base: #f8f6f2;
+  --bg-white: #ffffff;
+  --grid-color: rgba(100, 110, 130, 0.12);
+  --grid-size: 28px;
+  --border-pixel: #c8cdd8;
+  --accent-blue: #3b6fd4;
+  --accent-yellow: #f5c842;
+  --accent-red: #e05252;
+  --accent-green: #4caf6e;
+  --text-primary: #1a1d2e;
+  --text-secondary: #4a5068;
+  --text-muted: #8a91a8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-base: var(--bg-base);
+  --color-bg-white: var(--bg-white);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-red: var(--accent-red);
+  --color-accent-green: var(--accent-green);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border-pixel: var(--border-pixel);
+  --font-pixel: "DotGothic16", "Press Start 2P", monospace;
+  --font-body: "Noto Sans JP", "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+/* Pixel font utility */
+.font-pixel {
+  font-family: "DotGothic16", monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-pixel-sm {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+/* Pixel border utility */
+.pixel-border {
+  border: 2px solid var(--border-pixel);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.8),
+    2px 2px 0 var(--border-pixel);
+}
+
+.pixel-border-accent {
+  border: 2px solid var(--accent-blue);
+  box-shadow:
+    inset 0 0 0 1px rgba(59,111,212,0.15),
+    2px 2px 0 var(--accent-blue);
+}
+
+/* Section label */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--text-primary);
+  color: #ffffff;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.section-label-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Heading styles */
+.heading-pixel {
+  font-family: "DotGothic16", monospace;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+/* Button styles */
+.btn-pixel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "DotGothic16", monospace;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  border: 2px solid var(--text-primary);
+  background: var(--text-primary);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--accent-blue);
+}
+
+.btn-pixel:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--accent-blue);
+}
+
+.btn-pixel-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "DotGothic16", monospace;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  border: 2px solid var(--text-primary);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--border-pixel);
+}
+
+.btn-pixel-outline:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--border-pixel);
+  background: rgba(26,29,46,0.05);
+}
+
+/* Card styles */
+.card-pixel {
+  background: var(--bg-white);
+  border: 1px solid var(--border-pixel);
+  box-shadow: 3px 3px 0 var(--border-pixel);
+  transition: all 0.2s;
+}
+
+.card-pixel:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--border-pixel);
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Status bar */
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-pixel);
+  padding: 0.4rem 0.8rem;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.5rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 8px;
+  background: var(--border-pixel);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--accent-blue);
+  position: relative;
+}
+
+.progress-bar-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 6px,
+    rgba(255,255,255,0.3) 6px,
+    rgba(255,255,255,0.3) 8px
+  );
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-pixel);
 }
