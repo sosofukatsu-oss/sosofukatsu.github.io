@@ -20,7 +20,7 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
       {/* Thumbnail */}
       <div className="relative aspect-video bg-[var(--bg-base)] overflow-hidden">
         <Image
-          src={work.imageSrc}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${work.imageSrc}`}
           alt={work.title}
           fill
           className="object-cover"

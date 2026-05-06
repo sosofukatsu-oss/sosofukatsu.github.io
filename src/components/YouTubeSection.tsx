@@ -49,7 +49,7 @@ export default function YouTubeSection() {
               <div className="flex items-center gap-4 mb-5 pb-4 border-b border-[var(--border-pixel)]">
                 <div className="w-14 h-14 border-2 border-[var(--border-pixel)] overflow-hidden flex-shrink-0 bg-[var(--bg-base)]">
                   <Image
-                    src="/rogo_gamescapeinn.png"
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/rogo_gamescapeinn.png`}
                     alt="GAMESCAPE INN ロゴ"
                     width={56}
                     height={56}

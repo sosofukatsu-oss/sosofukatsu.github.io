@@ -127,7 +127,7 @@ export default function Hero() {
               <div className="flex items-start gap-4 mb-5">
                 <div className="w-16 h-16 border-2 border-[var(--border-pixel)] overflow-hidden flex-shrink-0 bg-[var(--bg-base)]">
                   <Image
-                    src="/hikokunin-kun.PNG"
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/hikokunin-kun.PNG`}
                     alt="SO-SO アイコン"
                     width={64}
                     height={64}
